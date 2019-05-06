@@ -1,0 +1,25 @@
+server:
+  servlet: 
+    context-path: /producer
+---    
+spring:
+  profiles: local
+  activemq:
+    broker-url: tcp://0.0.0.0:61616
+server:
+  port: 8085
+app:
+  config:
+    queue:
+      name: shipment-local-queue
+---
+spring:
+  profiles: dev
+  activemq:
+    broker-url: tcp://0.0.0.0:61616
+server:
+  port: 8095
+app:
+  config:
+    queue:
+      name: shipment-dev-queue

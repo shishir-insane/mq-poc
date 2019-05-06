@@ -1,0 +1,11 @@
+{
+  "requestType": "G",
+  "trn": "1234567890123456789012",
+  "name": "ABCDEFGHIJKLMNOPQRST",
+  "formatType": "U",
+  "amount": "000000000000017.450",
+  "currency": "GBP",
+  "service": "ATZ",
+  "sourceCountryCode": "DE",
+  "mainMessage": "ABCDEFGHIJKLMNOPQRSTUVWXYZ..."
+}

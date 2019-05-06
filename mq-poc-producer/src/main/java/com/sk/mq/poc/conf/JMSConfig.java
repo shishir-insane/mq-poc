@@ -19,9 +19,8 @@ public class JMSConfig {
 	private String queueName;
 	
 	@Bean
-	public Queue queue() {
+	public Queue shipmentQueue() {
 		log.info("Connection to queue {} is initilized in the application.", queueName);
 		return new ActiveMQQueue(queueName);
 	}
-
 }

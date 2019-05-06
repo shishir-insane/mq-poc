@@ -7,6 +7,7 @@
   <name>MQ POC Base</name>
   
   <modules>
+  	<module>mq-poc-publisher</module>
   	<module>mq-poc-listener</module>
   </modules>
 </project>

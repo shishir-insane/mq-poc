@@ -5,3 +5,7 @@ mq-poc-listener/.classpath
 mq-poc-consumer/.classpath
 target/
 mq-poc-publisher/.classpath
+mq-poc-producer/.springBeans
+mq-poc-producer/.classpath
+/logs/
+mq-poc-producer/logs/

@@ -11,7 +11,7 @@ public class ShipmentQueueConsumer {
 	
 	@JmsListener(destination = "${app.config.queue.name}")
 	public void receiveQueue(String message) {
-		log.info("New Shipment Message Receieved: ", message);
+		log.info("New Shipment Message Receieved: {}", message);
 	}
 
 }
