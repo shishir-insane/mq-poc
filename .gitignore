@@ -9,3 +9,4 @@ mq-poc-producer/.springBeans
 mq-poc-producer/.classpath
 /logs/
 mq-poc-producer/logs/
+mq-poc-consumer/logs/consumer.log
