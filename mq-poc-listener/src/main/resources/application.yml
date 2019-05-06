@@ -1,0 +1,21 @@
+spring:
+  profiles: local
+  activemq:
+    broker-url: tcp://0.0.0.0:61616
+server:
+  port: 8082
+app:
+  config:
+    queue:
+      name: shipment-local-queue
+---
+spring:
+  profiles: dev
+  activemq:
+    broker-url: tcp://0.0.0.0:61616
+server:
+  port: 8092
+app:
+  config:
+    queue:
+      name: shipment-dev-queue
