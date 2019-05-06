@@ -1,2 +1,2 @@
 # mq-poc
-A POC using Spring Boot and RabbitMQ
+A POC using Spring Boot and ActiveMQ

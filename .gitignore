@@ -2,3 +2,6 @@
 .settings/
 mq-poc-listener/target/
 mq-poc-listener/.classpath
+mq-poc-consumer/.classpath
+target/
+mq-poc-publisher/.classpath
