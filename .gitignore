@@ -1,0 +1,4 @@
+.project
+.settings/
+mq-poc-listener/target/
+mq-poc-listener/.classpath
