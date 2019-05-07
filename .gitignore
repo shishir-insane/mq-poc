@@ -10,3 +10,5 @@ mq-poc-producer/.classpath
 /logs/
 mq-poc-producer/logs/
 mq-poc-consumer/logs/consumer.log
+mq-poc-consumer/.factorypath
+mq-poc-consumer/logs/

@@ -1,3 +1,7 @@
+app:
+  config:
+
+---
 spring:
   profiles: local
   activemq:
@@ -7,7 +11,18 @@ server:
 app:
   config:
     queue:
-      name: shipment-local-queue
+      name: shipment-local-queue  
+    fields:
+      ref-number: ":20:"
+      execution-date: ":32A:"
+      execution-date-format: YYMMDD
+      fx-rate: ":36:"
+    suspicious:
+      condition:
+        source-country: AT
+        service-code: ATZ
+        execution-date-text: Ship dual FERT chem
+        names: Mark Imaginary,Govind Real,Shakil Maybe,Chang Imagine 
 ---
 spring:
   profiles: dev
@@ -19,3 +34,14 @@ app:
   config:
     queue:
       name: shipment-dev-queue
+    fields:
+      ref-number: ":20:"
+      execution-date: ":32A:"
+      execution-date-format: YYMMDD
+      fx-rate: ":36:"
+    suspicious:
+      condition:
+        source-country: AT
+        service-code: ATZ
+        execution-date-text: Ship dual FERT chem
+        names: Mark Imaginary, Govind Real, Shakil Maybe, Chang Imagine 

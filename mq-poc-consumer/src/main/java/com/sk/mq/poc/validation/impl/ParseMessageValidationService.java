@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -16,14 +17,17 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class MessageParserValidationService implements MessageValidationService {
+public class ParseMessageValidationService implements MessageValidationService {
 
-	private static final String REF_NUMBERS_FIELD_INDICATOR = ":20:";
-	private static final String EXECUTION_DATE_FIELD_INDICATOR = ":32:";
-	private static final String EXECUTION_DATE_FIELD_FORMAT = "YYMMDD";
-	private static final String FX_RATE_FIELD_INDICATOR = ":36:";
+	@Value("${app.config.fields.ref-number}")
+	private String refNumberFieldIndicator;
+	
+	@Value("${app.config.fields.execution-date}")
+	private String executionDateFieldIndicator;
+	
+	@Value("${app.config.fields.fx-rate}")
+	private String fxRateFieldIndicator;
 
-	@Override
 	public ShipmentMessage validateReceivedMessage(String messageText) {
 		return parseInputMessageFields(messageText);
 	}
@@ -70,8 +74,8 @@ public class MessageParserValidationService implements MessageValidationService 
 	private List<String> parseMessageReferenceNumber(String messageText) {
 		log.debug("2nd line of message: {}", messageText);
 		List<String> referenceNumbers = null;
-		if (StringUtils.startsWith(messageText, REF_NUMBERS_FIELD_INDICATOR)) {
-			String fieldValueStr = messageText.replaceFirst(REF_NUMBERS_FIELD_INDICATOR, StringUtils.EMPTY);
+		if (StringUtils.startsWith(messageText, refNumberFieldIndicator)) {
+			String fieldValueStr = messageText.replaceFirst(refNumberFieldIndicator, StringUtils.EMPTY);
 			if (StringUtils.isBlank(fieldValueStr)) {
 				throw new IllegalArgumentException("Input message does not contain reference numbers.");
 			}
@@ -86,25 +90,27 @@ public class MessageParserValidationService implements MessageValidationService 
 	private String parseMessageExecutionDate(String messageText) {
 		log.debug("3rd line of message: {}", messageText);
 		String executionDate = null;
-		if (StringUtils.startsWith(messageText, EXECUTION_DATE_FIELD_INDICATOR)) {
-			executionDate = messageText.replaceFirst(EXECUTION_DATE_FIELD_INDICATOR, StringUtils.EMPTY);
+		if (StringUtils.startsWith(messageText, executionDateFieldIndicator)) {
+			executionDate = messageText.replaceFirst(executionDateFieldIndicator, StringUtils.EMPTY);
 			if (StringUtils.isBlank(executionDate)) {
 				throw new IllegalArgumentException("Input message does not contain execution date.");
 			}
 		} else {
 			throw new IllegalArgumentException("Input message does not contain field for execution date.");
 		}
+		log.debug("Execution Date text after parsing 3rd line text: {}", executionDate);
 		return executionDate;
 	}
 
 	private String parseMessageFxRate(String messageText) {
 		log.debug("4th line of message: {}", messageText);
 		String fxRate = null;
-		if (StringUtils.startsWith(messageText, FX_RATE_FIELD_INDICATOR)) {
-			fxRate = messageText.replaceFirst(fxRate, StringUtils.EMPTY);
+		if (StringUtils.startsWith(messageText, fxRateFieldIndicator)) {
+			fxRate = messageText.replaceFirst(fxRateFieldIndicator, StringUtils.EMPTY);
 		} else {
 			throw new IllegalArgumentException("Input message does not contain field for execution date.");
 		}
+		log.debug("FX Rate text after parsing 3rd line text: {}", fxRate);
 		return fxRate;
 	}
 
