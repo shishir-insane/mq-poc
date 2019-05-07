@@ -19,7 +19,7 @@ app:
       request-type-value: G 
       format-type-value: U
       amount-pattern: ^([\+\-]{0,1})([0-9]{14,15})(\.)([0-9]{3}) 
-      execution-date-format: YYMMDD
+      execution-date-format: yyMMdd
     suspicious:
       condition:
         source-country: AT

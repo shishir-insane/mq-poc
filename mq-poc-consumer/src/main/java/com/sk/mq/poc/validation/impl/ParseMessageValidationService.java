@@ -14,13 +14,17 @@
  */
 package com.sk.mq.poc.validation.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,7 +54,7 @@ public class ParseMessageValidationService implements MessageValidationService {
 	@Value("${app.config.validation.execution-date-format}")
 	private String executionDateFieldFormat;
 
-	@Value("${app.config.validation.ref-number-value}")
+	@Value("${app.config.validation.request-type-value}")
 	private String requestTypeFixedValue;
 
 	@Value("${app.config.validation.fields-pattern}")
@@ -222,28 +226,17 @@ public class ParseMessageValidationService implements MessageValidationService {
 	 * @return true, if is valid date format
 	 */
 	private boolean isValidDateFormat(String dateStr) {
-		LocalDateTime ldt = null;
-		final DateTimeFormatter fomatter = DateTimeFormatter.ofPattern(executionDateFieldFormat);
-
-		try {
-			ldt = LocalDateTime.parse(dateStr, fomatter);
-			final String result = ldt.format(fomatter);
-			return result.equals(dateStr);
-		} catch (final DateTimeParseException e) {
-			try {
-				final LocalDate ld = LocalDate.parse(dateStr, fomatter);
-				final String result = ld.format(fomatter);
-				return result.equals(dateStr);
-			} catch (final DateTimeParseException exp) {
-				try {
-					final LocalTime lt = LocalTime.parse(dateStr, fomatter);
-					final String result = lt.format(fomatter);
-					return result.equals(dateStr);
-				} catch (final DateTimeParseException e2) {
-					return false;
-				}
-			}
-		}
+		Date date = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(executionDateFieldFormat);
+            date = sdf.parse(dateStr);
+            if (!dateStr.equals(sdf.format(date))) {
+                date = null;
+            }
+        } catch (ParseException ex) {
+            return false;
+        }
+        return date != null;
 	}
 
 }

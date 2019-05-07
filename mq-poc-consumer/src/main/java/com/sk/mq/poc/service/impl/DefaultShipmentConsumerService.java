@@ -31,10 +31,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DefaultShipmentConsumerService implements ShipmentConsumerService {
 
-	@Value("${app.config.suspicious.condition.status.valid}")
+	@Value("${app.config.suspicious.condition.status.invalid}")
 	private String suspiciousShipmentStatus;
 
-	@Value("${app.config.suspicious.condition.status.invalid}")
+	@Value("${app.config.suspicious.condition.status.valid}")
 	private String unSuspiciousShipmentStatus;
 
 	@Autowired
