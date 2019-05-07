@@ -16,3 +16,14 @@ mq-poc-manager/mvnw
 mq-poc-manager/mvnw.cmd
 mq-poc-manager/.mvn/
 mq-poc-manager/logs/
+mq-poc-producer/class-diagram.ucls
+mq-poc-producer/class-diagram.png
+mq-poc-manager/manager-class-diagram.ucls
+mq-poc-manager/manager-class-diagram.png
+mq-poc-consumer/consumer-class-diagram.ucls
+mq-poc-consumer/consumer-class-diagram.png
+intellij/.idea/workspace.xml
+intellij/.idea/vcs.xml
+intellij/.idea/misc.xml
+intellij/.idea/encodings.xml
+intellij/.idea/compiler.xml
