@@ -1,3 +1,17 @@
+/**
+ * ShipmentController.java
+ * mq-poc-prdocuer
+ * Copyright 2019 Shishir Kumar
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ */
 package com.sk.mq.poc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +33,11 @@ public class ShipmentController {
 	@Autowired
 	private ShipmentQueueProducer shipmentQueueProducer;
 
+	/**
+	 * Post shipment message.
+	 *
+	 * @param message the message
+	 */
 	@RequestMapping(method = RequestMethod.POST, consumes = "text/plain")
 	public void postShipmentMessage(@RequestBody String message) {
 		log.debug("Received message: {}", message);

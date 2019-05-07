@@ -13,14 +13,23 @@ app:
     fields:
       ref-number: ":20:"
       execution-date: ":32A:"
-      execution-date-format: YYMMDD
       fx-rate: ":36:"
+    validation:
+      fields-pattern: ^(.{1})(.{22})(.{20})(.{1})(.{19})(.{3})(.{3})(.{2}).*
+      request-type-value: G 
+      format-type-value: U
+      amount-pattern: ^([\+\-]{0,1})([0-9]{14,15})(\.)([0-9]{3}) 
+      execution-date-format: YYMMDD
     suspicious:
       condition:
         source-country: AT
         service-code: ATZ
         execution-date-text: Ship dual FERT chem
         names: Mark Imaginary,Govind Real,Shakil Maybe,Chang Imagine 
+        status:
+          invalid: Suspicious shipment DELIM AT DELIM AT ATZ AT DELIM {TRN}
+          valid: Nothing found, all okay
+        
 ---
 spring:
   profiles: dev
@@ -37,11 +46,19 @@ app:
     fields:
       ref-number: ":20:"
       execution-date: ":32A:"
-      execution-date-format: YYMMDD
       fx-rate: ":36:"
+    validation:
+      fields-pattern: ^(.{1})(.{22})(.{20})(.{1})(.{19})(.{3})(.{3})(.{2}).*
+      request-type-value: G 
+      format-type-value: U
+      amount-pattern: ^([\+\-]{0,1})([0-9]{14,15})(\.)([0-9]{3}) 
+      execution-date-format: YYMMDD
     suspicious:
       condition:
         source-country: AT
         service-code: ATZ
         execution-date-text: Ship dual FERT chem
-        names: Mark Imaginary, Govind Real, Shakil Maybe, Chang Imagine 
+        names: Mark Imaginary,Govind Real,Shakil Maybe,Chang Imagine 
+        status:
+          invalid: Suspicious shipment DELIM AT DELIM AT ATZ AT DELIM {TRN}
+          valid: Nothing found, all okay
