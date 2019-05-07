@@ -12,3 +12,7 @@ mq-poc-producer/logs/
 mq-poc-consumer/logs/consumer.log
 mq-poc-consumer/.factorypath
 mq-poc-consumer/logs/
+mq-poc-manager/mvnw
+mq-poc-manager/mvnw.cmd
+mq-poc-manager/.mvn/
+mq-poc-manager/logs/

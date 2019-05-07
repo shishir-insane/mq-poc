@@ -18,7 +18,7 @@ public class ShipmentQueueConsumer {
 	
 	@JmsListener(destination = "${app.config.queue.name}")
 	public void receiveQueue(String message) {
-		log.debug("New Shipment Message Receieved: {}", message);
+		log.info("New Shipment Message Receieved: {}", message);
 		if (StringUtils.isEmpty(message)) {
 			throw new IllegalArgumentException("Empty message received from the queue.");
 		}

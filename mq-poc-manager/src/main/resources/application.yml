@@ -1,0 +1,13 @@
+server:
+  servlet: 
+    context-path: /manager
+---    
+spring:
+  profiles: local
+server:
+  port: 8088
+---
+spring:
+  profiles: dev
+server:
+  port: 8098

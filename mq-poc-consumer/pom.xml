@@ -6,10 +6,6 @@
 	<artifactId>mq-poc-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<properties>
-		<spring.boot.version>2.1.1.RELEASE</spring.boot.version>
-	</properties>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

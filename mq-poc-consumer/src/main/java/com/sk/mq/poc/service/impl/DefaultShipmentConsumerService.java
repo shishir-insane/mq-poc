@@ -24,7 +24,7 @@ public class DefaultShipmentConsumerService implements ShipmentConsumerService {
 	public void processConsumedMessage(String messageText) {
 		ShipmentMessage shipmentMessage = parseMessageValidationService.validateReceivedMessage(messageText);
 		boolean isInvalidMessage = suspiciousConditionValidationService.isInValidReceivedMessage(shipmentMessage);
-		log.debug("Is received message invalid? {}", isInvalidMessage);
+		log.info("Is received message invalid? {}", isInvalidMessage);
 	}
 
 	
