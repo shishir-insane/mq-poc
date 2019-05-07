@@ -1,7 +1,3 @@
-app:
-  config:
-
----
 spring:
   profiles: local
   activemq:
@@ -12,6 +8,8 @@ app:
   config:
     queue:
       name: shipment-local-queue  
+    manager:
+      host-url: http://localhost:8088/manager/shipment  
     fields:
       ref-number: ":20:"
       execution-date: ":32A:"
@@ -34,6 +32,8 @@ app:
   config:
     queue:
       name: shipment-dev-queue
+    manager:
+      host-url: http://localhost:8088/manager/shipment  
     fields:
       ref-number: ":20:"
       execution-date: ":32A:"

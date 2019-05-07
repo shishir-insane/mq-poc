@@ -4,6 +4,12 @@ server:
 ---    
 spring:
   profiles: local
+  datasource:
+    url: jdbc:h2:mem:Database
+    driver-class-name: org.h2.Driver
+    username: admin
+    password: admin
+    continue-on-error: true
 server:
   port: 8088
 ---

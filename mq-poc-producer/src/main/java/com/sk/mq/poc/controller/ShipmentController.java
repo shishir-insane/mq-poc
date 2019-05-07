@@ -20,7 +20,7 @@ public class ShipmentController {
 	private ShipmentQueueProducer shipmentQueueProducer;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "text/plain")
-	public void getShipmentMessage(@RequestBody String message) {
+	public void postShipmentMessage(@RequestBody String message) {
 		log.debug("Received message: {}", message);
 		if (StringUtils.isEmpty(message)) {
 			throw new IllegalArgumentException("Input message should not be empty.");

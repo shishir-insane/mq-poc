@@ -9,5 +9,6 @@
   <modules>
   	<module>mq-poc-publisher</module>
   	<module>mq-poc-listener</module>
+  	<module>mq-poc-manager</module>
   </modules>
 </project>
