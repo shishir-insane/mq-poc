@@ -32,10 +32,16 @@ Below diagram is the typical sequence of events that occur during the consumptio
 
 ## System Components
 ### Shipment Message Producer API
+Below diagram depicts the UML model for the Shipment Message Producer API. Operations depicted in this diagram originate from the RESTful interface. However, the incoming messages can be pushed to the queue via any other means as well. 
+
 ![Producer Class Diagram](https://github.com/shishir-insane/mq-poc/blob/master/images/producer-class-diagram.png?raw=true)
 
 ### Shipment Message Consumer
+Below diagram depicts the UML model for the Shipment Message Consumer application. Operations depicted in this diagram originate after the message is consumed from the queue. The action performed in the sequence in this component are shown under **System Operations**.
+
 ![Consumer Class Diagram](https://github.com/shishir-insane/mq-poc/blob/master/images/consumer-class-diagram.png?raw=true)
 
 ### Shipment Manager API
+Below diagram depicts the UML model for the Shipment Message Manager API. Operations depicted in this diagram originate from the RESTful interface provided to POST new messages to this manager application.
+
 ![Manager Class Diagram](https://github.com/shishir-insane/mq-poc/blob/master/images/manager-class-diagram.png?raw=true)

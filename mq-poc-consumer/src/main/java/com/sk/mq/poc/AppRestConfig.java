@@ -38,6 +38,15 @@ public class AppRestConfig {
 		restTemplate.getMessageConverters().add(messageConverter);
 		return restTemplate;
 	}
+	
+//	@Bean
+//	public JmsListenerContainerFactory<?> shipmentJmsContainerFactory(ConnectionFactory connectionFactory,
+//			DefaultJmsListenerContainerFactoryConfigurer configurer) {
+//		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+//		factory.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
+//		configurer.configure(factory, connectionFactory);
+//		return factory;
+//	}
 
 	/**
 	 * Gets the client http request factory.

@@ -12,6 +12,10 @@
 		<version>2.1.1.RELEASE</version>
 	</parent>
 
+	<properties>
+		<activemq.version>5.15.9</activemq.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,7 +37,6 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.4</version>
 		</dependency>
 
 		<!-- Test -->
@@ -56,40 +59,45 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.activemq.tooling</groupId>
-				<artifactId>maven-activemq-plugin</artifactId>
-				<version>5.7.0</version>
-				<configuration>
-					<configUri>xbean:file:../conf/activemq.xml</configUri>
-					<fork>false</fork>
-					<systemProperties>
-						<property>
-							<name>javax.net.ssl.keyStorePassword</name>
-							<value>password</value>
-						</property>
-						<property>
-							<name>org.apache.activemq.default.directory.prefix</name>
-							<value>./target/</value>
-						</property>
-					</systemProperties>
-				</configuration>
+				<groupId>com.lazerycode.jmeter</groupId>
+				<artifactId>jmeter-maven-plugin</artifactId>
+				<version>2.9.0</version>
+				<executions>
+					<!-- Run JMeter tests -->
+					<execution>
+						<id>jmeter-tests</id>
+						<goals>
+							<goal>jmeter</goal>
+						</goals>
+					</execution>
+					<!-- Fail build on errors in test -->
+					<execution>
+						<id>jmeter-check-results</id>
+						<goals>
+							<goal>results</goal>
+						</goals>
+					</execution>
+				</executions>
 				<dependencies>
 					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring</artifactId>
-						<version>2.5.5</version>
-					</dependency>
-					<dependency>
-						<groupId>org.mortbay.jetty</groupId>
-						<artifactId>jetty-xbean</artifactId>
-						<version>6.1.11</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.camel</groupId>
-						<artifactId>camel-activemq</artifactId>
-						<version>1.1.0</version>
+						<groupId>org.apache.activemq</groupId>
+						<artifactId>activemq-all</artifactId>
+						<version>${activemq.version}</version>
 					</dependency>
 				</dependencies>
+				<configuration>
+					<errorRateThresholdInPercent>1</errorRateThresholdInPercent>
+					<jMeterProcessJVMSettings>
+						<arguments>
+							<argument>-XX:MaxMetaspaceSize=256m</argument>
+							<argument>-Xmx1024m</argument>
+							<argument>-Xms1024m</argument>
+						</arguments>
+					</jMeterProcessJVMSettings>
+					<jmeterExtensions>
+						<artifact>org.apache.activemq:activemq-all:jar:${activemq.version}</artifact>
+					</jmeterExtensions>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
