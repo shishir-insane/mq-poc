@@ -28,3 +28,17 @@ intellij/.idea/misc.xml
 intellij/.idea/encodings.xml
 intellij/.idea/compiler.xml
 mq-poc-consumer/intellij/
+mq-poc-shipment-manager/.mvn/wrapper/maven-wrapper.properties
+mq-poc-shipment-manager/mvnw.cmd
+mq-poc-shipment-manager/mvnw
+mq-poc-shipment-manager/manager-class-diagram.ucls
+mq-poc-shipment-manager/manager-class-diagram.png
+mq-poc-shipment-manager/.mvn/wrapper/maven-wrapper.jar
+mq-poc-shipment-manager/logs/archived/manager-2019-05-07.0.log
+mq-poc-shipment-manager/logs/producer.log
+mq-poc-shipment-manager/.mvn/wrapper/MavenWrapperDownloader.java
+mq-poc-shipment-manager/logs/manager.log
+mq-poc-shipment-manager/.mvn/
+mq-poc-validation-manager/mvnw
+mq-poc-validation-manager/mvnw.cmd
+mq-poc-validation-manager/.mvn/

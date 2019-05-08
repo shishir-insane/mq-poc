@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sk.mq.poc.dto.ShipmentMessage;
+import com.sk.db.poc.dto.ShipmentMessage;
 
 import lombok.extern.slf4j.Slf4j;
 
