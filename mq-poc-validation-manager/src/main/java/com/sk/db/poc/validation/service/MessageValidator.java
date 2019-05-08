@@ -1,5 +1,5 @@
 /**
- * MessageValidationService.java
+ * MessageValidator.java
  * mq-poc-validation-manager
  * Copyright 2019 Shishir Kumar
  * 
@@ -14,6 +14,6 @@
  */
 package com.sk.db.poc.validation.service;
 
-public interface MessageValidationService {
+public interface MessageValidator {
 
 }

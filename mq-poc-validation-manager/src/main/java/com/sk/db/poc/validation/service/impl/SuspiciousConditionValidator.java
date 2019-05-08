@@ -1,5 +1,5 @@
 /**
- * SuspiciousConditionValidationService.java
+ * SuspiciousConditionValidator.java
  * mq-poc-validation-manager
  * Copyright 2019 Shishir Kumar
  * 
@@ -21,10 +21,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.sk.db.poc.validation.dto.ShipmentMessage;
-import com.sk.db.poc.validation.service.MessageValidationService;
+import com.sk.db.poc.validation.service.MessageValidator;
 
 @Service
-public class SuspiciousConditionValidationService implements MessageValidationService {
+public class SuspiciousConditionValidator implements MessageValidator {
 
 	@Value("${app.config.suspicious.condition.names}")
 	private String[] suspiciousNames;

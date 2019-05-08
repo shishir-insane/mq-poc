@@ -36,10 +36,10 @@ public class DefaultShipmentValidationService implements ShipmentValidationServi
 	private String unSuspiciousShipmentStatus;
 
 	@Autowired
-	private ParseMessageValidationService parseMessageValidationService;
+	private MessageParserValidator messageParserValidator;
 
 	@Autowired
-	private SuspiciousConditionValidationService suspiciousConditionValidationService;
+	private SuspiciousConditionValidator suspiciousConditionValidator;
 
 	@Autowired
 	private ShipmentRestTemplateHelper restTemplateHelper;
@@ -53,8 +53,8 @@ public class DefaultShipmentValidationService implements ShipmentValidationServi
 	 */
 	@Override
 	public String processConsumedMessage(String messageText) {
-		final ShipmentMessage shipmentMessage = parseMessageValidationService.validateReceivedMessage(messageText);
-		final boolean isInvalidMessage = suspiciousConditionValidationService.isInValidReceivedMessage(shipmentMessage);
+		final ShipmentMessage shipmentMessage = messageParserValidator.validateReceivedMessage(messageText);
+		final boolean isInvalidMessage = suspiciousConditionValidator.isInValidReceivedMessage(shipmentMessage);
 		log.info("Is received message invalid? {}", isInvalidMessage);
 		final String messageResult = restTemplateHelper.postForShipmentMessage(shipmentMessage,
 				isInvalidMessage ? StringUtils.replace(suspiciousShipmentStatus, "{TRN}", shipmentMessage.getTrn())

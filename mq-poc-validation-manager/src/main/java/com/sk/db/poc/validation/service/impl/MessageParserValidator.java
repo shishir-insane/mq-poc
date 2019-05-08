@@ -1,5 +1,5 @@
 /**
- * ParseMessageValidationService.java
+ * MessageParserValidator.java
  * mq-poc-validation-manager
  * Copyright 2019 Shishir Kumar
  * 
@@ -28,13 +28,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.sk.db.poc.validation.dto.ShipmentMessage;
-import com.sk.db.poc.validation.service.MessageValidationService;
+import com.sk.db.poc.validation.service.MessageValidator;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class ParseMessageValidationService implements MessageValidationService {
+public class MessageParserValidator implements MessageValidator {
 
 	@Value("${app.config.fields.ref-number}")
 	private String refNumberFieldIndicator;
