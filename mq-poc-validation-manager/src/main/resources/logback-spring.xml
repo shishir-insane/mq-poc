@@ -2,7 +2,7 @@
 <configuration>
 
 	<property name="logDirectory" value="./logs" />
-	<property name="logFileName" value="producer" />
+	<property name="logFileName" value="validation-manager" />
 	<property name="logPattern" value="%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable" />
  
 	<appender name="Console"
@@ -38,8 +38,8 @@
 		<appender-ref ref="Console" />
 	</root>
 
-	<!-- LOG "com.sk.db.poc.producer*" at DEBUG level -->
-	<logger name="com.sk.db.poc.producer" level="debug" additivity="false">
+	<!-- LOG "com.sk.mq.poc*" at DEBUG level -->
+	<logger name="com.sk.mq.poc" level="debug" additivity="false">
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="Console" />
 	</logger>

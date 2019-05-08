@@ -1,0 +1,47 @@
+/**
+ * ShipmentController.java
+ * mq-poc-shipment-manager
+ * Copyright 2019 Shishir Kumar
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ */
+package com.sk.db.poc.shipment.controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sk.db.poc.shipment.dto.ShipmentMessage;
+
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@RequestMapping("/shipment")
+@Slf4j
+public class ShipmentController {
+
+	/**
+	 * Post new shipment.
+	 *
+	 * @param message          the message
+	 * @param validationStatus the validation status
+	 * @return the string
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public String postNewShipment(@RequestBody ShipmentMessage message,
+			@RequestHeader("validation-status") String validationStatus) {
+		log.info("New Shipment Message Recieved: {}", message);
+		log.info("Message Validation Status: {}", validationStatus);
+		return "Got it. Thanks";
+	}
+
+}

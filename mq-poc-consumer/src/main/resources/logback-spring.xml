@@ -38,8 +38,8 @@
 		<appender-ref ref="Console" />
 	</root>
 
-	<!-- LOG "com.sk.mq.poc*" at DEBUG level -->
-	<logger name="com.sk.mq.poc" level="debug" additivity="false">
+	<!-- LOG "com.sk.db.poc.consumer*" at DEBUG level -->
+	<logger name="com.sk.db.poc.consumer" level="debug" additivity="false">
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="Console" />
 	</logger>

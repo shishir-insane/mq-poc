@@ -12,10 +12,6 @@
 		<version>2.1.1.RELEASE</version>
 	</parent>
 
-	<properties>
-		<activemq.version>5.15.9</activemq.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -29,10 +25,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -57,47 +49,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.lazerycode.jmeter</groupId>
-				<artifactId>jmeter-maven-plugin</artifactId>
-				<version>2.9.0</version>
-				<executions>
-					<!-- Run JMeter tests -->
-					<execution>
-						<id>jmeter-tests</id>
-						<goals>
-							<goal>jmeter</goal>
-						</goals>
-					</execution>
-					<!-- Fail build on errors in test -->
-					<execution>
-						<id>jmeter-check-results</id>
-						<goals>
-							<goal>results</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.activemq</groupId>
-						<artifactId>activemq-all</artifactId>
-						<version>${activemq.version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<errorRateThresholdInPercent>1</errorRateThresholdInPercent>
-					<jMeterProcessJVMSettings>
-						<arguments>
-							<argument>-XX:MaxMetaspaceSize=256m</argument>
-							<argument>-Xmx1024m</argument>
-							<argument>-Xms1024m</argument>
-						</arguments>
-					</jMeterProcessJVMSettings>
-					<jmeterExtensions>
-						<artifact>org.apache.activemq:activemq-all:jar:${activemq.version}</artifact>
-					</jmeterExtensions>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

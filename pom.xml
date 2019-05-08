@@ -7,8 +7,9 @@
   <name>MQ POC Base</name>
   
   <modules>
-  	<module>mq-poc-publisher</module>
-  	<module>mq-poc-listener</module>
-  	<module>mq-poc-manager</module>
+  	<module>mq-poc-producer</module>
+  	<module>mq-poc-consumer</module>
+  	<module>mq-poc-validation-manager</module>
+  	<module>mq-poc-shipment-manager</module>
   </modules>
 </project>
