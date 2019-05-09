@@ -1,7 +1,7 @@
 # MQ POC
 A POC using Spring Boot and ActiveMQ
 
-[![DeepScan grade](https://deepscan.io/api/teams/3688/projects/5426/branches/41658/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3688&pid=5426&bid=41658)
+![Travis CI Status](https://api.travis-ci.com/shishir-insane/mq-poc.svg?branch=master)
 
 ## High Level Architecture 
 
