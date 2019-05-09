@@ -26,16 +26,18 @@ The scope of this project includes:
 
 ## Design Overview
 ### System Architecture
-The system is constructed from multiple distinct components. These components are briefly described as below.
-
-1. **Message Producer API** - This is the message producer layer, consistign of an API to accept/allow incoming messages and send them to the configured JMS queue. It provides a RESTful endpoint to accept text messages before pushing it to the queue.
-2. **Message Consumer** - This is a message cosumer layer of the application which consumes the message from the queue, performs technical and business validations and further dispatches to the subsequent layer.
-3. **Validation API** - This is the message validation layer of the application which exposes RESTful API to receive and manage messages.
-3. **Data Manager API** - This is the message processor/manager layer of the application which exposes RESTful API(s) to manage messages.
 
 Below is the high level system architecture of this POC application.
 
 ![High Level Design](https://github.com/shishir-insane/mq-poc/blob/master/images/hld.png?raw=true)
+
+The system is constructed from multiple distinct components. These components are briefly described as below.
+
+1. **Message Producer API** - This is the message producer layer, consisting of an API to accept/allow incoming messages and send them to the configured JMS queue. It provides a RESTful endpoint to accept text messages before pushing it to the queue.
+2. **Message Consumer** - This is a message consumer layer of the application which consumes the message from the queue, performs technical and business validations and further dispatches to the subsequent layer.
+3. **Validation Manager API** - This is the message validation layer of the application which exposes RESTful API to receive and manage messages.
+3. **Data Manager API** - This is the message processor/manager layer of the application which exposes RESTful API(s) to manage messages.
+
 
 ### Technologies Used
 1. Java 1.8
@@ -50,7 +52,7 @@ Below diagram is the typical sequence of events that occur during the consumptio
 ### Design Considerations
 1. For this POC, single instances of system components and queue server/node is considered. However, design allows any of the components to be scaled up as per the load.
 2. For reasons in #1, the **Validation Manager API** is separated from the **Message Consumer** component so that scaling decisions are not dependent on each other.
-3. No datastore is considered in this POC and all the information/data is visible deligently on persistent log files.
+3. No datastore is considered in this POC and all the information/data is visible diligently on persistent log files.
 4. Failover/replay of queue messages is not configured in this POC. The commit mode is auto by default which can be changed easily in configurations.
 5. High availability of system components is not stressed in this POC.  
 6. Non functional requirements such as flexibility, extensibility, performance, reliability, testability and manageability are taken care while designing the solution.
