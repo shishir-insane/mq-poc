@@ -53,9 +53,9 @@ Below diagram is the typical sequence of events that occur during the consumptio
 1. For this POC, single instances of system components and queue server/node is considered. However, design allows any of the components to be scaled up as per the load.
 2. For reasons in #1, the **Validation Manager API** is separated from the **Message Consumer** component so that scaling decisions are not dependent on each other.
 3. No datastore is considered in this POC and all the information/data is visible diligently on persistent log files.
-4. Failover/replay of queue messages is not configured in this POC. The commit mode is auto by default which can be changed easily in configurations.
-5. High availability of system components is not stressed in this POC.  
-6. Non functional requirements such as flexibility, extensibility, performance, reliability, testability and manageability are taken care while designing the solution.
+4. Non functional requirements such as flexibility, extensibility, performance, reliability, testability and manageability are taken care while designing the solution.
+5. Failover/replay of queue messages is not configured in this POC. The commit mode is auto by default which can be changed easily in configurations.
+6. High availability of system components is not stressed in this POC.   
 
 ## System Components
 ### Message Producer API
