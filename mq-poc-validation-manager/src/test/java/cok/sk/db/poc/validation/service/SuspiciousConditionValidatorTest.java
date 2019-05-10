@@ -1,8 +1,6 @@
 package cok.sk.db.poc.validation.service;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -46,12 +44,12 @@ public class SuspiciousConditionValidatorTest {
 	}
 
 	@Test
-	public void validateReceivedMessage_validMessage_thenAssertInvalidFalse() {
+	public void validateReceivedMessageValidMessageThenAssertInvalidFalse() {
 		assertFalse(suspiciousConditionValidator.isInValidReceivedMessage(message));
 	}
 
 	@Test
-	public void validateReceivedMessage_validMessage_thenAssertInvalidTrue() {
+	public void validateReceivedMessageValidMessageThenAssertInvalidTrue() {
 		assertTrue(suspiciousConditionValidator.isInValidReceivedMessage(suspiciousMessage));
 	}
 }

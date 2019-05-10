@@ -1,8 +1,8 @@
 package cok.sk.db.poc.validation.controller;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -15,11 +15,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -35,9 +33,6 @@ import com.sk.db.poc.validation.rest.ShipmentRestTemplateHelper;
 @ActiveProfiles("test")
 public class ShipmentControllerTest {
 
-	@LocalServerPort
-	private int port;
-
 	@Autowired
 	private MockMvc mockMvc;
 
@@ -45,7 +40,7 @@ public class ShipmentControllerTest {
 	private ShipmentRestTemplateHelper shipmentRestTemplateHelper;
 
 	@Test
-	public void whenPostValidMessage_thenReturnSuccess() throws Exception {
+	public void whenPostValidMessageThenReturnSuccess() throws Exception {
 		when(shipmentRestTemplateHelper.postForShipmentMessage(any(ShipmentMessage.class), any(String.class)))
 				.thenReturn("Got it. Thanks");
 		MvcResult result = mockMvc

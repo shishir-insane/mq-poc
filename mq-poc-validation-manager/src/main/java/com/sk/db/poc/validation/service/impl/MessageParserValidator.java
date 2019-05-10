@@ -85,6 +85,7 @@ public class MessageParserValidator implements MessageValidator {
 		if (CollectionUtils.isEmpty(splitByLineStrings) || splitByLineStrings.size() < 4) {
 			throw new IllegalArgumentException("Input message does not contain all required fields.");
 		}
+		shipmentMessage = new ShipmentMessage();
 		shipmentMessage = parseMessageFieldsOnFirstLine(splitByLineStrings.get(0), shipmentMessage);
 		shipmentMessage.setReferenceNumbers(parseMessageReferenceNumber(splitByLineStrings.get(1)));
 		shipmentMessage.setExecutionDate(parseMessageExecutionDate(splitByLineStrings.get(2)));
@@ -108,7 +109,6 @@ public class MessageParserValidator implements MessageValidator {
 			log.debug("Matched text groups: {}", matcher.groupCount());
 			log.debug("Matched text: {}", matcher.group(0));
 			int counter = 1;
-			message = new ShipmentMessage();
 
 			// Check for fixed value for request type
 			if (!requestTypeFixedValue.equalsIgnoreCase(matcher.group(counter))) {
@@ -182,11 +182,10 @@ public class MessageParserValidator implements MessageValidator {
 			if (StringUtils.isBlank(executionDate)) {
 				throw new IllegalArgumentException("Input message does not contain execution date.");
 			}
-			if (!StringUtils.containsIgnoreCase(executionDate, suspiciousExecutionDateText)) {
-				if (!isValidDateFormat(executionDate)) {
-					throw new IllegalArgumentException(
-							"Input message does not contain valid execution date in standard required format.");
-				}
+			if (!StringUtils.containsIgnoreCase(executionDate, suspiciousExecutionDateText)
+					&& !isValidDateFormat(executionDate)) {
+				throw new IllegalArgumentException(
+						"Input message does not contain valid execution date in standard required format.");
 			}
 		} else {
 			throw new IllegalArgumentException("Input message does not contain field for execution date.");
@@ -221,16 +220,16 @@ public class MessageParserValidator implements MessageValidator {
 	 */
 	private boolean isValidDateFormat(String dateStr) {
 		Date date = null;
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(executionDateFieldFormat);
-            date = sdf.parse(dateStr);
-            if (!dateStr.equals(sdf.format(date))) {
-                date = null;
-            }
-        } catch (ParseException ex) {
-            return false;
-        }
-        return date != null;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(executionDateFieldFormat);
+			date = sdf.parse(dateStr);
+			if (!dateStr.equals(sdf.format(date))) {
+				date = null;
+			}
+		} catch (ParseException ex) {
+			return false;
+		}
+		return date != null;
 	}
 
 }

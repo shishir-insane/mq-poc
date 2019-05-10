@@ -28,9 +28,7 @@ public class MessageParserValidatorTest {
 	private String messageText;
 	
 	private String invalidDateMessageText;
-	
-	private String suspiciousMessage;
-	
+		
 	@Before
 	public void init() {
 		messageText = "GZXFRTJ675FTRHJJJ87zyxtBig Kumar           U000000000000017.450EURATCGB\r\n" + 
@@ -42,29 +40,24 @@ public class MessageParserValidatorTest {
 				":20:TR234565,Zu8765Z,Bhj876t\r\n" + 
 				":32A:1801231\r\n" + 
 				":36:12";
-		
-		suspiciousMessage = "GZXFRTJ675FTRHJJJ87zyxtChang Imagine       U000000000000017.450EURATZAT\r\n" + 
-				":20:TR234565,Zu8765Z,Bhj876t\r\n" + 
-				":32A:180123Ship dual Fert chem\r\n" + 
-				":36:12";
 	}
 
 	@Test
-	public void validateReceivedMessage_validMessage_thenVerifyName() {
+	public void validateReceivedMessageValidMessageThenVerifyName() {
 		ShipmentMessage message = validator.validateReceivedMessage(messageText);
 		assertNotNull(message);
 		assertEquals("Big Kumar           ", message.getName());
 	}
 	
 	@Test
-	public void validateReceivedMessage_validMessage_thenVerifyDate() {
+	public void validateReceivedMessageValidMessageThenVerifyDate() {
 		ShipmentMessage message = validator.validateReceivedMessage(messageText);
 		assertNotNull(message);
 		assertEquals("180123", message.getExecutionDate());
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void validateReceivedMessage_invalidDateMessage_thenVerifyDate() {
+	public void validateReceivedMessageInvalidDateMessageThenVerifyDate() {
 		validator.validateReceivedMessage(invalidDateMessageText);
 	}
 }
